@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Новая ссылка на CSS-файл Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Обновленный код с использованием новых классов Bootstrap -->
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Bobr</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a href="#" class="p-2 text-dark">Главная</a>
+            <a href="#" class="p-2 text-dark">Главная</a>
+        </nav>
+        <a href="#" class="btn btn-outline-primary">Документация</a>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-5 offset-1">
+                <h1>Погода в вашем городе</h1>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Город</label>
+                        {{ form.name }}
+                        <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-danger">
+                    </div>
+                </form>
+
+                <!-- ... (remaining code) ... -->
+
+            </div>
+            <div class="col-5 offset-1">
+                <h1>Информация</h1>
+
+                {% for info in all_info %}
+                <div class="alert alert-info">
+                    <div class="row">
+                        <div class="col-9">
+                            <b>Город:</b>{{ info.city }}<br>
+                            <b>Температура:</b>{{ info.temp }}<sup>o</sup><br>
+                        </div>
+                        <div class="col-02 offset-1">
+                            <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Фото погоды" class="img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Новая ссылка на JavaScript-файл Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eJ8jj0zolrXH9T9g7mN3r7bq3Pm9XuJ9lYJ3gXQ22U7a1HfXfT6WcqAJwzjiwI2B" crossorigin="anonymous"></script>
+</body>
+
+</html>
